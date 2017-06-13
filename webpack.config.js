@@ -13,7 +13,7 @@ module.exports = {
     filename: '[name].js'
   },
   // 引用但不打包的文件
-  externals: { 'react': 'React', 'react-dom': 'ReactDOM' },
+  // externals: { 'react': 'React', 'react-dom': 'ReactDOM' },
   plugins: [
 
     // webpack2 需要设置 LoaderOptionsPlugin 开启代码压缩
