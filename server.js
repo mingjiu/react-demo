@@ -1,6 +1,7 @@
 const express = require('express')
 const app = express()
 const serveStatic = require('serve-static')
+const proxy = require('./server-module/proxy')
 
 const webpack = require('webpack')
 const WebpackDevServer = require('webpack-dev-server')
@@ -21,15 +22,17 @@ new WebpackDevServer(webpack(config), {
   }
 })
 
-app.get('/*.js', function(req, res){
-  res.redirect('http://localhost:' + DEVPORT + req.path)
-})
+// app.get('/*.js(on)?', function(req, res){
+//
+//   res.redirect('http://localhost:' + DEVPORT + req.path)
+// })
+app.get('/*.js(on)?', proxy)
 
-app.use(serveStatic(__dirname + '/build', {
-  setHeaders: function (res, path) {
-    res.setHeader('Cache-Control', 'public, max-age=1000000000000')
-  }
-}))
+// app.use(serveStatic(__dirname + '/build', {
+//   setHeaders: function (res, path) {
+//     res.setHeader('Cache-Control', 'public, max-age=1000000000000')
+//   }
+// }))
 
 app.get('/', function(req, res){
 	res.sendFile(__dirname + '/demo/index.html')

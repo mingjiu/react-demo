@@ -5,7 +5,7 @@ import './scss/index.scss'
 class App extends Component {
   render() {
     return (
-      <div>Hello world.</div>
+      <div>Hello world--hot update, no bug asdf</div>
     )
   }
 }
